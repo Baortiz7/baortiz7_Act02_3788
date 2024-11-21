@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormContacto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container p-4 mt-5" 
+    style="
+        background: linear-gradient(135deg, #ffffff, #e9ecef); 
+        border-radius: 20px; 
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); 
+        max-width: 600px;">
+    <h2 class="text-center mb-4" 
+        style="
+            font-weight: 300; 
+            color: #212529; 
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);">
+        Formulario de Contacto
+    </h2>
+
+    <!-- Formulario de Contacto -->
+    <form id="FormContacto" name="FormContacto" class="mt-4" onsubmit="return validarFormulario()">
+        <!-- Campo Correo Electrónico -->
+        <div class="mb-4">
+            <label for="email" class="form-label" style="font-weight: bold;">Correo Electrónico:</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su correo electrónico" 
+                style="border-radius: 15px; padding: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);" required>
+        </div>
+
+        <!-- Campo Fecha de Nacimiento -->
+        <div class="mb-4">
+            <label for="fechaNacimiento" class="form-label" style="font-weight: bold;">Fecha de Nacimiento:</label>
+            <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" max="" 
+                style="border-radius: 15px; padding: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);" required>
+        </div>
+
+        <!-- Campo Teléfono -->
+        <div class="mb-4">
+            <label for="telefono" class="form-label" style="font-weight: bold;">Teléfono:</label>
+            <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Ingrese su número de teléfono" 
+                pattern="\d+" title="Solo se permiten números" 
+                style="border-radius: 15px; padding: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);" required>
+        </div>
+
+        <!-- Botón de Enviar -->
+        <div class="d-flex justify-content-center">
+            <input type="button" id="enviarButton" class="btn btn-success" value="Enviar" onclick="enviarFormulario()" 
+                style="
+                    border-radius: 50px; 
+                    padding: 10px 30px; 
+                    font-weight: bold; 
+                    transition: all 0.3s; 
+                    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);">
+        </div>
+    </form>
+</div>
+
+<style>
+    /* Efecto al pasar el cursor sobre el botón */
+    #enviarButton:hover {
+        transform: scale(1.1);
+        box-shadow: 0 10px 20px rgba(40, 167, 69, 0.5);
+    }
+
+    /* Mejoras visuales en los campos de entrada */
+    input:focus {
+        border: 2px solid #6c757d;
+        box-shadow: 0 0 10px rgba(108, 117, 125, 0.4);
+        outline: none;
+    }
+
+    /* Diseño del placeholder */
+    input::placeholder {
+        color: rgba(108, 117, 125, 0.8);
+        font-style: italic;
+    }
+
+    /* Fondo general */
+    body {
+        background: linear-gradient(120deg, #adb5bd, #dee2e6);
+        font-family: 'Arial', sans-serif;
+    }
+</style>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Validación de la fecha de nacimiento para que no se pueda seleccionar una fecha futura
+        document.addEventListener('DOMContentLoaded', function() {
+            const fechaNacimiento = document.getElementById('fechaNacimiento');
+            const hoy = new Date().toISOString().split('T')[0];
+            fechaNacimiento.setAttribute('max', hoy); // Establece el valor máximo como la fecha actual
+        });
+    
+        // Función de validación para el formulario
+        function validarFormulario() {
+            const email = document.getElementById('email').value;
+            const telefono = document.getElementById('telefono').value;
+    
+            // Validar correo electrónico
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Por favor, ingrese un correo electrónico válido.");
+                return false;
+            }
+    
+            // Validar que el teléfono solo contiene números y tiene entre 7 y 15 dígitos
+            const telefonoRegex = /^\d{10}$/;
+            if (!telefonoRegex.test(telefono)) {
+                alert("El número de teléfono debe contener 10 dígitos.");
+                return false;
+            }
+    
+            return true; // Si todas las validaciones son correctas
+        }
+    
+        // Función para deshabilitar el botón y cambiar el mensaje
+        function enviarFormulario() {
+            if (!validarFormulario()) {
+                return; // Detener envío si la validación falla
+            }
+    
+            const enviarButton = document.getElementById('enviarButton');
+            // Deshabilitar el botón
+            enviarButton.disabled = true;
+            // Cambiar el mensaje del botón
+            enviarButton.value = "Enviando datos ……....";
+    
+            // Simular el envío del formulario
+            setTimeout(() => {
+                alert("Formulario enviado con éxito.");
+                enviarButton.disabled = false; // Rehabilitar el botón para nuevas pruebas
+                enviarButton.value = "Enviar";
+            }, 2000);
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!-- Estilos Google -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet">
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>FormLoginAvanzado</title>
+</head>
+<body>
+    <div class="contenedor-formularios">
+        <!-- Links de los formularios -->
+        <ul class="contenedor-tabs">
+            <li class="tab tab-segunda active"><a href="#iniciar-sesion">Iniciar Sesión</a></li>
+            <li class="tab tab-primera" name="registrar"><a href="#registrarse" >Registrarse</a></li>
+        </ul>
+
+        <!-- Contenido de los Formularios -->
+        <div class="contenido-tab">
+            <!-- Iniciar Sesion -->
+            <div id="iniciar-sesion">
+                <h1>Iniciar Sesión</h1>
+                <form name="FormaLogin" action="" method="post">
+                    <div class="contenedor-input">
+                        <label>
+                            Usuario <span class="required">*</span>
+                        </label>
+                        <input type="text" name="usuario" placeholder="Ingrese su usuario">
+                    </div>
+
+                    <div class="contenedor-input">
+                        <label>
+                            Contraseña <span class="required">*</span>
+                        </label>
+                        <input type="password" name="clave" placeholder="Ingrese su contraseña">
+                    </div>
+                    <input type="submit" class="button button-block" value="Iniciar Sesión">
+                </form>
+            </div>
+
+            <!-- Registrarse -->
+            <div id="registrarse">
+                <h1>Registrarse</h1>
+                <form action="" method="post">
+                    <div class="fila-arriba">
+                        <div class="contenedor-input">
+                            <label>
+                                Nombre <span class="required">*</span>
+                            </label>
+                            <input type="text" name="nom" placeholder="Ingrese su nombre">
+                        </div>
+
+                        <div class="contenedor-input">
+                            <label>
+                                Apellido <span class="required">*</span>
+                            </label>
+                            <input type="text" name="ape" placeholder="Ingrese su apellido">
+                        </div>
+                    </div>
+                    <div class="contenedor-input">
+                        <label>
+                            Usuario <span class="required">*</span>
+                        </label>
+                        <input type="text" name="usu" placeholder="Ingrese un usuario">
+                    </div>
+                    <div class="contenedor-input">
+                            <label>
+                                Email <span class="required">*</span>
+                            </label>
+                        <input type="email" name="email" placeholder="Ingrese su correo electrónico">
+                    </div>
+                    <div class="contenedor-input">
+                        <label>
+                            Contraseña <span class="required">*</span>
+                        </label>
+                        <input type="password"  name="pas" placeholder="Ingrese su contraseña">
+                    </div>
+                    
+                    <div class="contenedor-input">
+                        <label>
+                            Telefono <span class="required">*</span>
+                        </label>
+                        <input type="text" name="telefono" placeholder="Ingrese su número de teléfono">
+                    </div>
+
+                    <div class="contenedor-input">
+                        <label>
+                            Empresa <span class="required">*</span>
+                        </label>
+                        <input type="text" name="empresa" placeholder="Ingrese su empresa">
+                    </div>
+                    <div class="contenedor-input">
+                        <label>
+                            <span class="required"></span>
+                        </label>
+                        <input type="date" name="fecha">
+                    </div>
+
+                    <input type="submit" class="button button-block" value="Registrarse">
+                </form>
+            </div>
+        </div>
+    </div>
+
+   <script src="js/jquery.js"></script>
+   <script src="js/main.js"></script>
+
+</body>
+</html>
